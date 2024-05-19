@@ -1,0 +1,10 @@
+package com.mahel.chatApp.repository;
+
+import com.mahel.chatApp.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+
+}
