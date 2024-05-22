@@ -25,7 +25,13 @@ public class ChatMessageController {
     ) {
         ChatMessage savedMsg = chatMessageService.save(chatMessage);
         simpMessagingTemplate.convertAndSendToUser(
-                chatMessage.getRecipientId(), "/queue/messages", null
+                chatMessage.getRecipientId(), "/queue/messages",
+                ChatMessageNotification.builder()
+                        .id(savedMsg.getId())
+                        .senderId(savedMsg.getSenderId())
+                        .recipientId(savedMsg.getRecipientId())
+                        .content(savedMsg.getContent())
+                        .build()
         );
     }
 
